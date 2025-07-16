@@ -1,6 +1,6 @@
 {
-  "name": "my-new-app",
-  "productName": "my-new-app",
+  "name": "ara-os-simulation",
+  "productName": "Ara OS: Simulation",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -32,6 +32,7 @@
     "vite": "^5.4.19"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.13.1",
     "electron-squirrel-startup": "^1.0.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"

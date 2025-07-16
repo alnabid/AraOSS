@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Press+Start+2P&family=Prosto+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Zen+Dots&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
 }
 
 body {
-  background: #111;
-  color: white;
+    font-family: 'Cal Sans', Verdana, Geneva, Tahoma, sans-serif;
 }
