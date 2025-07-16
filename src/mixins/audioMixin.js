@@ -2,18 +2,26 @@ export default {
   data() {
     return {
       audioMap: {
-        click: new Audio('@/sounds/click_001.ogg'),
-        click2: new Audio('@/sounds/click__002.ogg'),
+        hover: {
+          audio: new Audio('/sounds/bong_001.ogg'),
+          volume: 0.6
+        },
+        click: {
+          audio: new Audio('/sounds/confirmation_001.ogg'),
+          volume: 0.3
+        }
       }
     }
   },
   methods: {
     playAudio(key) {
-      const audio = this.audioMap[key]
-      if (audio) {
+      const entry = this.audioMap[key]
+      if (entry && entry.audio) {
+        const audio = entry.audio
+        audio.volume = entry.volume ?? 1
         audio.currentTime = 0
         audio.play()
-        console.log('happened')
+        console.log(`audio played: ${key} at volume ${audio.volume}`)
       }
     }
   }

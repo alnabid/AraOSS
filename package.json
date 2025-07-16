@@ -1,15 +1,31 @@
 {
-  "name": "ara-os-simulation",
-  "productName": "Ara OS: Simulation",
+  "name": "quick-find",
+  "productName": "Quick Find",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "app-description",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "build": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.6.0",
+    "@electron-forge/maker-deb": "^7.6.0",
+    "@electron-forge/maker-dmg": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.6.0",
+    "@electron-forge/maker-squirrel": "^7.6.0",
+    "@electron-forge/maker-zip": "^7.6.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.6.0",
+    "@electron-forge/plugin-fuses": "^7.6.0",
+    "@electron-forge/plugin-vite": "^7.6.0",
+    "@electron/fuses": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "electron": "33.2.1",
+    "vite": "^5.4.11"
   },
   "keywords": [],
   "author": {
@@ -17,24 +33,11 @@
     "email": "alnabidrm@gmail.com"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@electron-forge/cli": "^7.8.1",
-    "@electron-forge/maker-deb": "^7.8.1",
-    "@electron-forge/maker-rpm": "^7.8.1",
-    "@electron-forge/maker-squirrel": "^7.8.1",
-    "@electron-forge/maker-zip": "^7.8.1",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
-    "@electron-forge/plugin-fuses": "^7.8.1",
-    "@electron-forge/plugin-vite": "^7.8.1",
-    "@electron/fuses": "^1.8.0",
-    "@vitejs/plugin-vue": "^6.0.0",
-    "electron": "37.2.2",
-    "vite": "^5.4.19"
-  },
   "dependencies": {
-    "bootstrap-icons": "^1.13.1",
+    "bootstrap-icons": "^1.11.3",
     "electron-squirrel-startup": "^1.0.1",
-    "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "electron-store": "^10.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }

@@ -1,13 +1,13 @@
 <template>
     <div class="shape shape-2">
         <div class="links">
-            <div @mouseover="playAudio('click')" class="link">G<span>a</span>me<span>s</span> <div class="bg"></div></div>
-            <div class="link">Ga<span>lle</span>ry <div class="bg"></div></div>
-            <div class="link">S<span>et</span>t<span>in</span>gs <div class="bg"></div></div>
+            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">G<span>a</span>me<span>s</span> <div class="bg"></div></div>
+            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">Ga<span>lle</span>ry <div class="bg"></div></div>
+            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">S<span>et</span>t<span>in</span>gs <div class="bg"></div></div>
             <div class="notes">
                 25 <div class="horline"></div> DEM0 22/07
             </div>
-            <div class="link">Cr<span>ed</span>its <div class="bg"></div></div>
+            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">Cr<span>ed</span>its <div class="bg"></div></div>
         </div>
     </div>
 </template>

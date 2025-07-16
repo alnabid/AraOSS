@@ -1,8 +1,14 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import { readFileSync, writeFile, readdir } from 'node:fs';
+import Store from 'electron-store';
+import { ChildProcess, spawn } from 'node:child_process';
+import { join } from 'node:path';
+import { cwd } from 'node:process';
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
+const store = new Store();
+
 if (started) {
   app.quit();
 }
@@ -12,6 +18,9 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: process.platform === 'win32'
+      ? path.join(__dirname, 'assets', 'icon.ico')
+      : path.join(__dirname, 'assets', 'icon.icns'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -24,8 +33,7 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -51,6 +59,3 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.

@@ -1,3 +1,7 @@
-window.addEventListener('DOMContentLoaded', () => {
-  // preload logic if needed
-})
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electron', {
+  send: (channel, data) => ipcRenderer.send(channel, data),
+  on: (channel, func) => ipcRenderer.on(channel, func),
+  invoke: (channel, ...args) => ipcRenderer.invoke(channel, ...args)
+});
