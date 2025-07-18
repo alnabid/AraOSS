@@ -56,10 +56,10 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   
-  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   font-family: 'Space Mono';
   font-size: 0.7rem;
@@ -75,6 +75,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   width: 200px;
 }

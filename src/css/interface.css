@@ -90,12 +90,12 @@ section {
 }
 
 .shape-3 {
-    border-radius: 1rem 1rem 12rem 12rem;
+    border-radius: 1rem;
+    max-height: 150px;
 }
 
 .shape-4 {
-    height: 100px;
-    flex: none;
+    flex: 1;
     background: rgba(255, 255, 255, 0.153);
     mask: linear-gradient(
         transparent 0% 25%,
@@ -107,6 +107,23 @@ section {
     align-self: flex-end;
     border-radius: 0;
     animation: flicker ease-in-out infinite 1s;
+    transition: 0.2s;
+    overflow: hidden;
+    position: relative;
+}
+.shape-4:hover {
+    animation: none;
+    mask: none;
+    border-radius: 1rem;
+}
+.shape-4:hover ::v-deep(.info) {
+    display: flex;
+}
+.shape-4:hover ::v-deep(img) {
+    width: 120%;
+    height: 120%;
+    margin-left: -20%;
+    margin-bottom: -20%;
 }
 @keyframes flicker {
     0% {

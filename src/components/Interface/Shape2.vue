@@ -1,23 +1,17 @@
 <template>
     <div class="shape shape-2">
         <div class="links">
-            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">G<span>a</span>me<span>s</span> <div class="bg"></div></div>
-            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">Ga<span>lle</span>ry <div class="bg"></div></div>
-            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">S<span>et</span>t<span>in</span>gs <div class="bg"></div></div>
+            <div @mouseenter="playAudio('hover')" @click="playAudio('click')" class="link">G<span>a</span>me<span>s</span> <div class="bg"></div></div>
+            <div @mouseenter="playAudio('hover')" @click="playAudio('click')" class="link">Ga<span>lle</span>ry <div class="bg"></div></div>
+            <div @mouseenter="playAudio('hover')" @click="playAudio('click')" class="link">S<span>et</span>t<span>in</span>gs <div class="bg"></div></div>
             <div class="notes">
                 25 <div class="horline"></div> DEM0 22/07
             </div>
-            <div @mouseover="playAudio('hover')" @click="playAudio('click')" class="link">Cr<span>ed</span>its <div class="bg"></div></div>
+            <div @mouseenter="playAudio('hover')" @click="playAudio('click')" class="link">Cr<span>ed</span>its <div class="bg"></div></div>
         </div>
     </div>
 </template>
-<script>
-import audioMixin from '@/mixins/audioMixin';
 
-export default {
-    mixins: [audioMixin]
-}
-</script>
 <style scoped>
 @import url(@/css/interface.css);
 
@@ -75,3 +69,16 @@ export default {
     width: 100%;
 }
 </style>
+
+<script>
+import audioMixin from '@/mixins/audioMixin';
+
+export default {
+    mixins: [audioMixin],
+    mounted() {
+
+  console.log('playAudio available?', typeof this.playAudio);
+
+    }
+}
+</script>
