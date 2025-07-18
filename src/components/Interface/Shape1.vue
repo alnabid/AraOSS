@@ -10,24 +10,27 @@
 @import url(@/css/interface.css);
 
 .header {
-    padding: 1.5rem 2.5rem;
+    padding: 1rem 2rem;
     display: flex;
     gap: 0.2rem;
     color: rgba(255, 28, 123, 0.84);
     gap: 0.5rem;
+    flex-direction: column;
 }
 .header h1 {
     font-size: 3rem;
-    text-decoration: underline;
+    font-family: 'space mono';
+    /* text-decoration: underline;
     text-decoration-color: rgb(255, 104, 195);
     text-decoration-thickness: 0.2rem;
-    text-underline-offset: 5px;
+    text-underline-offset: 5px; */
 }
 .header p {
     font-family: 'Press Start 2P';
     background: rgba(255, 28, 123, 0.84);
     padding: 0.5rem;
-    padding-right: 3rem;
+    padding-right: 2rem;
+    width: fit-content;
     height: fit-content;
     font-size: 1.1rem;
     color: rgb(255, 255, 255);

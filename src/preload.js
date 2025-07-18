@@ -1,7 +1,8 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge } = require('electron');
+const Store = require('electron-store');
+const store = new Store();
 
-contextBridge.exposeInMainWorld('electron', {
-  send: (channel, data) => ipcRenderer.send(channel, data),
-  on: (channel, func) => ipcRenderer.on(channel, func),
-  invoke: (channel, ...args) => ipcRenderer.invoke(channel, ...args)
+contextBridge.exposeInMainWorld('electronStore', {
+  get: (key) => store.get(key),
+  set: (key, value) => store.set(key, value),
 });

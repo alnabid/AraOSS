@@ -13,39 +13,52 @@
         <p class="notes">{{ card.text }}</p>
       </div>
     </div>
+    currently playing {{ currentlyPlaying.name }}
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+<script>
+import audioMixin from '../../mixins/audioMixin';
 
-const cards = ref([
-  {
-    icon: 'bi bi-headphones',
-    text: 'Turn audio on and use headphones for intended experience.',
+export default {
+  mixins: [audioMixin],
+  data() {
+    return {
+      currentSong: '',
+      cards: [
+        {
+          icon: 'bi bi-headphones',
+          text: 'Turn audio on and use headphones for intended experience.',
+        },
+        {
+          icon: 'bi bi-info',
+          text: 'Bugs expected, development was rushed.',
+        },
+        {
+          icon: 'bi bi-stickies',
+          text: 'Click on Gallery for developer notes.',
+        },
+        {
+          icon: 'bi bi-magic',
+          text: 'Check Settings for customization.',
+        },
+      ],
+      activeIndex: 0,
+      interval: null,
+    };
   },
-  {
-    icon: 'bi bi-stickies',
-    text: 'Click on Gallery for developer notes.',
+  method: {
+
   },
-  {
-    icon: 'bi bi-magic',
-    text: 'Check Settings for customization.',
+  mounted() {
+    this.interval = setInterval(() => {
+      this.activeIndex = (this.activeIndex + 1) % this.cards.length;
+    }, 5000);
   },
-]);
-
-const activeIndex = ref(0);
-let interval;
-
-onMounted(() => {
-  interval = setInterval(() => {
-    activeIndex.value = (activeIndex.value + 1) % cards.value.length;
-  }, 5000); // 5 seconds
-});
-
-onUnmounted(() => {
-  clearInterval(interval);
-});
+  unmounted() {
+    clearInterval(this.interval);
+  },
+};
 </script>
 
 <style scoped>
@@ -86,6 +99,6 @@ onUnmounted(() => {
 }
 
 .icon {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 </style>

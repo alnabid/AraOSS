@@ -37,7 +37,9 @@ section {
     overflow: hidden;
     height: 150px;
     flex: none;
-    background: linear-gradient(90deg,rgba(255, 255, 255, 0.779), pink, rgba(255, 159, 191, 0.84));
+    box-shadow: 0;
+    /* background: linear-gradient(90deg,rgba(255, 255, 255, 0.779), pink, rgba(255, 159, 191, 0.84)); */
+    background: none;
     background-size: 400% 400%;
     animation: bg-gradient 5s ease infinite;
 }
@@ -57,6 +59,7 @@ section {
     width: 150px;
     height: 150px;
     background: radial-gradient(rgba(135, 133, 255, 0.687) 0%, rgba(255, 96, 221, 0.687) 100%);
+    opacity: 10%;
     top: -20px;
     left: -20px;
     position: absolute;
@@ -77,21 +80,23 @@ section {
 @keyframes cd {
     0% {
         background-size: 200% 200%;
-        opacity: 100%;
+        opacity: 0%;
     }
     50% {
         background-size: 100% 100%;
-        opacity: 50%;
+        opacity: 5%;
     }
     100% {
         background-size: 200% 200%;
-        opacity: 100%;
+        opacity: 0%;
     }
 }
 
 .shape-3 {
     border-radius: 1rem;
     max-height: 150px;
+    background: none;
+    color: white;
 }
 
 .shape-4 {
@@ -114,7 +119,8 @@ section {
 .shape-4:hover {
     animation: none;
     mask: none;
-    border-radius: 1rem;
+    object-fit: contain;
+    background: none;
 }
 .shape-4:hover ::v-deep(.info) {
     display: flex;
@@ -153,4 +159,9 @@ section {
     );
         mask-size: 100% 10px;
     }
+}
+
+.shape-2 {
+    min-height: 0;
+    flex: 0;
 }
