@@ -13,7 +13,6 @@
         <p class="notes">{{ card.text }}</p>
       </div>
     </div>
-    currently playing {{ currentlyPlaying.name }}
   </div>
 </template>
 
@@ -24,7 +23,6 @@ export default {
   mixins: [audioMixin],
   data() {
     return {
-      currentSong: '',
       cards: [
         {
           icon: 'bi bi-headphones',
@@ -67,7 +65,7 @@ export default {
 .slideshow {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 120px;
   
   display: flex;
   flex-direction: column;
@@ -99,6 +97,6 @@ export default {
 }
 
 .icon {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 </style>

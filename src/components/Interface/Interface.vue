@@ -1,4 +1,5 @@
 <script setup>
+import CurrentSong from './CurrentSong.vue';
 import Shape1 from './Shape1.vue';
 import Shape2 from './Shape2.vue';
 import Shape3 from './Shape3.vue';
@@ -13,6 +14,7 @@ import Shape4 from './Shape4.vue';
             </div>
             <div class="column column-2">
                 <Shape3 />
+                <CurrentSong />
                 <Shape4 />
             </div>
         </div>

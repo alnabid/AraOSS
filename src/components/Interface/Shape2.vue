@@ -78,11 +78,6 @@ export default {
           currentIndex: 0,
         },
         {
-          name: 'Music Playing',
-          options: ['its_too_cold', 'twozero', ''],
-          currentIndex: 0,
-        },
-        {
           name: 'Audio',
           options: ['On', 'Off'],
           currentIndex: 0,

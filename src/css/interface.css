@@ -94,9 +94,10 @@ section {
 
 .shape-3 {
     border-radius: 1rem;
-    max-height: 150px;
+    height: fit-content;
     background: none;
     color: white;
+    flex: 0;
 }
 
 .shape-4 {
@@ -126,10 +127,7 @@ section {
     display: flex;
 }
 .shape-4:hover ::v-deep(img) {
-    width: 120%;
-    height: 120%;
-    margin-left: -20%;
-    margin-bottom: -20%;
+    size: 110%;
 }
 @keyframes flicker {
     0% {
@@ -164,4 +162,19 @@ section {
 .shape-2 {
     min-height: 0;
     flex: 0;
+}
+
+.radio-info {
+  width: 100%;
+  padding: 1rem;
+  flex: 0;
+  background: none;
+  color: white;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono';
+  text-align: center;
+  font-size: 0.7rem;
 }
