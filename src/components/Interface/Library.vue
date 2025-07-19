@@ -1,5 +1,35 @@
 <template>
   <section v-if="visible">
+    <div class="keybinds">
+      <h2>Keybinds</h2>
+      <div class="instructions">
+        <div class="block">
+          <div class="keys">
+            <div class="key">Space</div>
+          </div>
+          <div class="action">
+            Close
+          </div>
+        </div>
+        <div class="block">
+          <div class="keys">
+            <div class="key">W</div>
+            <div class="key">S</div>
+          </div>
+          <div class="action">
+            Select Item
+          </div>
+        </div>
+        <div class="block">
+          <div class="keys">
+            <div class="key">TAB</div>
+          </div>
+          <div class="action">
+            Switch tabs
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <!-- Top: Tabs + Keybind Info -->
       <div class="top">
@@ -8,7 +38,6 @@
           <div class="tab" :class="{ active: currentTab === 'Music' }" @click="switchTab('Music')">Music</div>
           <div class="tab" :class="{ active: currentTab === 'Notes' }" @click="switchTab('Notes')">Notes</div>
         </div>
-        <div class="keybinds">Keybinds: Q = Back | E = Next | Backspace = Close</div>
       </div>
 
       <!-- Main: Left (Items) & Right (Content) -->
@@ -24,55 +53,57 @@
             <div class="number">{{ index + 1 }}</div>
             Item {{ index + 1 }}
           </div>
-          <div class="close-btn" @click="close()">
-            Close
-          </div>
         </div>
 
-        <div class="content">
-          <!-- === Videos === -->
-          <div v-if="currentTab === 'Videos' && selectedIndex === 0">
-            <video src="" controls></video>
-            <p>This is the first video description.</p>
-          </div>
-          <div v-if="currentTab === 'Videos' && selectedIndex === 1">
-            <img src="" alt="Thumbnail" />
-            <video src="" controls></video>
-            <p>This is the second video with a preview thumbnail above.</p>
-          </div>
+        <div class="right">
+          <div class="content">
+            <!-- === Videos === -->
+            <div v-if="currentTab === 'Videos' && selectedIndex === 0">
+              <video src="" controls></video>
+              <p>This is the first video description.</p>
+            </div>
+            <div v-if="currentTab === 'Videos' && selectedIndex === 1">
+              <img src="" alt="Thumbnail" />
+              <video src="" controls></video>
+              <p>This is the second video with a preview thumbnail above.</p>
+            </div>
 
-          <!-- === Music === -->
-          <div v-if="currentTab === 'Music' && selectedIndex === 0">
-            <img src="" alt="Album Art" />
-            <audio controls src="song1.mp3"></audio>
-            <p>Track 1 — Chill vibes with ambient tones.</p>
-          </div>
-          <div v-if="currentTab === 'Music' && selectedIndex === 1">
-            <div class="music-block">
-              <p class="track-name">Track 2: Synthwave Dreams</p>
-              <audio controls src=""></audio>
-              <img src="" alt="Album Art 2" />
-              <p>Experience 80s-inspired retro sounds.</p>
+            <!-- === Music === -->
+            <div v-if="currentTab === 'Music' && selectedIndex === 0">
+              <img src="" alt="Album Art" />
+              <audio controls src="song1.mp3"></audio>
+              <p>Track 1 — Chill vibes with ambient tones.</p>
             </div>
-          </div>
+            <div v-if="currentTab === 'Music' && selectedIndex === 1">
+              <div class="music-block">
+                <p class="track-name">Track 2: Synthwave Dreams</p>
+                <audio controls src=""></audio>
+                <img src="" alt="Album Art 2" />
+                <p>Experience 80s-inspired retro sounds.</p>
+              </div>
+            </div>
 
-          <!-- === Notes === -->
-          <div v-if="currentTab === 'Notes' && selectedIndex === 0">
-            <p class="note-title">Reminder: Meeting Notes</p>
-            <div class="note-content">
-              <ul>
-                <li>Project deadline: Aug 5</li>
-                <li>Client feedback to be incorporated</li>
-              </ul>
+            <!-- === Notes === -->
+            <div v-if="currentTab === 'Notes' && selectedIndex === 0">
+              <p class="note-title">Reminder: Meeting Notes</p>
+              <div class="note-content">
+                <ul>
+                  <li>Project deadline: Aug 5</li>
+                  <li>Client feedback to be incorporated</li>
+                </ul>
+              </div>
+            </div>
+            <div v-if="currentTab === 'Notes' && selectedIndex === 1">
+              <p class="note-title">Checklist</p>
+              <div class="note-content">
+                <input type="checkbox" checked /> Write code<br />
+                <input type="checkbox" /> Test functionality<br />
+                <input type="checkbox" /> Deploy to production
+              </div>
             </div>
           </div>
-          <div v-if="currentTab === 'Notes' && selectedIndex === 1">
-            <p class="note-title">Checklist</p>
-            <div class="note-content">
-              <input type="checkbox" checked /> Write code<br />
-              <input type="checkbox" /> Test functionality<br />
-              <input type="checkbox" /> Deploy to production
-            </div>
+          <div class="close-btn" @click="close()">
+            Close
           </div>
         </div>
       </div>
@@ -87,7 +118,7 @@ export default {
   data() {
     return {
       visible: false,
-      currentTab: 'Videos',
+      currentTab: 'Music',
       selectedIndex: 0,
       tabs: ['Videos', 'Music', 'Notes']
     };
@@ -119,15 +150,15 @@ export default {
       const currentTabIndex = this.tabs.indexOf(this.currentTab);
 
       switch (e.key) {
-        case 'e':
-        case 'E':
+        case 's':
+        case 'S':
             if (this.selectedIndex < 1) {
                 this.selectedIndex++;
                 this.playAudio('click');
             }
             break;
-        case 'q':
-        case 'Q':
+        case 'w':
+        case 'W':
             if (this.selectedIndex > 0) {
                 this.selectedIndex--;
                 this.playAudio('click');
@@ -169,109 +200,101 @@ section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(196, 111, 175, 0.228);
   color: white;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  font-family: 'Space Mono';
+  backdrop-filter: blur(5px);
 }
 
 .container {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: #222;
   padding: 1rem;
 }
 
 .tabs {
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 .tab {
   padding: 0.5rem 1rem;
-  background: #333;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 .tab.active {
-  background: #555;
+  background: #ff627c;
   font-weight: bold;
 }
 
-.keybinds {
-  font-size: 0.9rem;
-  color: #bbb;
-}
 
 .main {
-  flex: 1;
+  width: 80%;
+  margin: auto;
   display: flex;
+  align-items: start;
+  height: fit-content;
   overflow: hidden;
+  margin-top: 3rem;
+  gap: 1rem;
 }
 
 .table {
   width: 30%;
-  background: #1a1a1a;
   overflow-y: auto;
+  height: 250px;
 }
 
 .item {
+  display: flex;
+  gap: 1rem;
   padding: 0.8rem;
-  border-bottom: 1px solid #333;
   cursor: pointer;
+  color: white;
 }
 
 .item.selected {
-  background: #333;
+  background: #ff627c;
 }
 
 .number {
   font-weight: bold;
 }
 
-.content {
+.right {
+  display: flex;
+  flex-direction: column;
   width: 70%;
+}
+
+.content {
+  width: 100%;
   padding: 1rem;
-  background: #1e1e1e;
+  background: #242424c0;
+  backdrop-filter: blur(5px);
   overflow-y: auto;
+  height: 350px;
 }
 
-.content img,
-.content video,
-.content audio {
-  max-width: 100%;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-}
-
-.note-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.note-content {
-  background: #2a2a2a;
-  padding: 1rem;
-  border-radius: 6px;
-}
-
-.music-block {
-  background: #2a2a2a;
-  padding: 1rem;
-  border-radius: 6px;
-}
-
-.track-name {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.close-btn {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  background: #ff627c;
+  width: fit-content;
+  margin: 1rem 0;
+  align-self: flex-end;
 }
 </style>
