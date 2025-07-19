@@ -1,7 +1,7 @@
 <template>
-  <div class="shape shape-2">
+  <div class="shape shape-2" tabindex="0" @keydown="handleKey">
     <!-- Main links menu -->
-    <div v-if="!showSettings && !showGame" class="links">
+    <div v-if="!showSettings" class="links">
       <div
         @mouseenter="playAudio('hover')"
         @click="() => { playAudio('click'); openGame() }"
@@ -42,6 +42,8 @@
     <Settings
       v-if="showSettings"
       :settings="settings"
+      :selectedIndex="selectedIndex"
+      @update:selectedIndex="val => selectedIndex = val"
       @closeSettings="closeSettings"
       @playClick="playAudio('click')"
       @muteAudio="muteAudio('all')"
@@ -78,6 +80,7 @@ export default {
           currentIndex: 0,
         },
       ],
+      selectedIndex: 0,
     };
   },
   methods: {
@@ -87,6 +90,7 @@ export default {
     openSettings() {
       this.playAudio('click');
       this.showSettings = true;
+      this.selectedIndex = 0; // reset selection on open
     },
     closeSettings() {
       this.playAudio('click');

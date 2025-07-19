@@ -1,17 +1,53 @@
 <template>
-  <div class="settings-container">
-    <button class="close-btn" @click="$emit('closeSettings')">← Back</button>
+  <div class="settings-container" tabindex="0">
     <section class="settings-section">
       <div
-        class="setting"
         v-for="(setting, i) in settings"
         :key="i"
+        class="setting"
+        :class="{ selected: selectedIndex === i }"
         @click="cycleOption(i)"
+        @mouseenter="selectedIndex = i"
       >
         <div class="name">{{ setting.name }}</div>
         <div class="active-option">{{ setting.options[setting.currentIndex] }}</div>
       </div>
     </section>
+    <button class="close-btn" @click="$emit('closeSettings')">Done</button>
+        <div class="keybinds">
+      <h2>Keybinds</h2>
+      <div class="instructions">
+        <div class="block">
+          <div class="keys">
+            <div class="key"><i class="bi bi-mouse2"></i> Move Mouse</div>
+            <div class="key">W</div>
+            <div class="key">S</div>
+          </div>
+          <div class="action">
+            Select Settings
+          </div>
+        </div>
+        <div class="block">
+          <div class="keys">
+            <div class="key"><i class="bi bi-mouse2"></i> Left Click</div>
+            <div class="key">A</div>
+            <div class="key">D</div>
+          </div>
+          <div class="action">
+            Toggle Settings Options
+          </div>
+        </div>
+        <div class="block">
+          <div class="keys">
+            <div class="key"><i class="bi bi-mouse2"></i> Middle Click</div>
+            <div class="key">Space</div>
+          </div>
+          <div class="action">
+            Done
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,10 +59,17 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      selectedIndex: 0,
+    };
+  },
   methods: {
-    cycleOption(index) {
+    cycleOption(index, direction = 1) {
       const setting = this.settings[index];
-      setting.currentIndex = (setting.currentIndex + 1) % setting.options.length;
+      setting.currentIndex =
+        (setting.currentIndex + direction + setting.options.length) %
+        setting.options.length;
       this.$emit('playClick');
 
       const selectedValue = setting.options[setting.currentIndex];
@@ -53,44 +96,88 @@ export default {
         }
       }
     },
+    handleKey(e) {
+      const key = e.key.toLowerCase();
+
+      switch (key) {
+        case 'w':
+          this.selectedIndex =
+            (this.selectedIndex - 1 + this.settings.length) % this.settings.length;
+          break;
+        case ' ':
+          e.preventDefault();
+          this.$emit('closeSettings');
+          break;
+        case 's':
+          this.selectedIndex = (this.selectedIndex + 1) % this.settings.length;
+          break;
+        case 'a':
+        case 'd':
+          const dir = key === 'a' ? -1 : 1;
+          if (this.selectedIndex >= 0 && this.selectedIndex < this.settings.length) {
+            this.cycleOption(this.selectedIndex, dir);
+          }
+          break;
+      }
+    },
+    handleMouse(e) {
+      switch (e.button) {
+        case 1:
+          e.preventDefault();
+          this.$emit('closeSettings');
+          break;
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('keydown', this.handleKey);
+    window.addEventListener('mousedown', this.handleMouse);
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKey);
+    window.removeEventListener('mousedown', this.handleMouse);
   },
 };
 </script>
 
 <style scoped>
-/* same styles as before */
 .settings-container {
   padding: 2rem;
-  background: #1a1a1a;
-  color: #ff5577;
+  color: #ffffff;
   font-family: 'Space Mono', monospace;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  outline: none; /* prevent default focus outline */
 }
 
 .close-btn {
-  background: none;
-  border: none;
-  color: #ff5577;
-  font-size: 1.2rem;
+  background: rgb(255, 20, 87);
+  color: #ffffff;
+  font-size: 1rem;
   cursor: pointer;
   margin-bottom: 1rem;
-  align-self: flex-start;
+  text-transform: uppercase;
+  font-family: 'Space Mono';
+  padding: 0.5rem 1rem;
+  align-self: flex-end;
 }
 
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .settings-section .setting {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 1rem;
-  border: 1px solid rgba(255, 83, 132, 0.6);
+  outline: 1px solid rgba(255, 83, 132, 0.6);
+  color: rgb(255, 20, 87);
   border-radius: 0.3rem;
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s;
-}
-.settings-section .setting:hover {
-  background-color: rgba(255, 83, 132, 0.3);
 }
 
 .name {
@@ -98,7 +185,20 @@ export default {
 }
 
 .active-option {
-  font-style: italic;
-  color: #ffaad3;
+  color: #ffffff;
+}
+
+.setting.selected {
+  background-color: rgba(255, 250, 251, 0.5);
+  outline: 0;
+}
+
+.keybinds {
+  position: relative;
+  bottom: 0;
+}
+.keybinds .instructions {
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
 }
 </style>

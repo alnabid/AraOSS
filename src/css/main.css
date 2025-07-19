@@ -9,6 +9,45 @@
     user-select: none;
 }
 
+*:focus {
+    outline: none;
+}
 body {
     font-family: 'Cal Sans', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.keybinds {
+  position: absolute;
+  bottom: 3rem;
+  color: rgba(230, 230, 230, 0.758);
+  font-family: 'Space Mono';
+}
+.keybinds h2 {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.keybinds .instructions {
+  display: flex;
+  gap: 3rem;
+  font-size: 0.8rem;
+}
+.keybinds .block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.keybinds .keys {
+  display: flex;
+  gap: 0.5rem;
+}
+.keybinds .key {
+  border: 1px solid white;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.keybinds .key i {
+  font-size: 0.6rem;
 }
