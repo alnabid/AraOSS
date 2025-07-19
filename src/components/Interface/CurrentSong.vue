@@ -18,6 +18,7 @@ export default {
 </script>
 <style scoped>
 span {
+    color: #efffae;
     padding: 0 0.5rem;
 }
 </style>

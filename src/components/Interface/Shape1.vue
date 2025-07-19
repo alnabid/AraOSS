@@ -13,7 +13,7 @@
     padding: 1rem 2rem;
     display: flex;
     gap: 0.2rem;
-    color: rgba(255, 28, 123, 0.84);
+    color: #ff5384d2;
     gap: 0.5rem;
     flex-direction: column;
 }
@@ -27,7 +27,7 @@
 }
 .header p {
     font-family: 'Press Start 2P';
-    background: rgba(255, 28, 123, 0.84);
+    background: #ff5384d2;
     padding: 0.5rem;
     padding-right: 2rem;
     width: fit-content;
@@ -38,13 +38,13 @@
 }
 @keyframes flicker {
     0% {
-        color: rgba(255, 28, 123, 0.84);
+        color: rgba(0, 0, 0, 0);
     }
     50% {
         color: white;
     }
     100% {
-        color: rgba(255, 28, 123, 0.84);
+        color: rgba(0, 0, 0, 0);
     }
 }
 </style>

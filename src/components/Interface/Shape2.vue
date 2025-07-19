@@ -172,8 +172,8 @@ export default {
   margin: 2rem;
 }
 .links .link {
-  outline: 1px solid rgba(255, 10, 108, 0.418);
-  color: rgba(255, 83, 132, 0.822);
+  outline: 1px solid #ff5384d2;
+  color: #ff5384d2;
   width: fit-content;
   font-size: 1.5rem;
   padding: 0.5rem 8rem 0.2rem 1rem;
@@ -185,21 +185,21 @@ export default {
   position: relative;
 }
 .links .link span {
-  font-family: 'Michroma';
+  font-family: 'Space Mono';
 }
 .notes {
-  font-family: 'zen dots';
+  font-family: 'Space Mono';
   display: flex;
   margin: 2rem 0;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   gap: 0.5rem;
-  color: rgba(255, 62, 126, 0.256);
+  color: #ff5384d2;
   align-items: center;
 }
 .notes .horline {
   width: 100px;
   height: 1rem;
-  background: rgb(222, 91, 102);
+  background: #efffae;
   border-radius: 2rem;
 }
 .links .link:hover {

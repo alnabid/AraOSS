@@ -236,7 +236,7 @@ section {
 }
 
 .tab.active {
-  background: #ff627c;
+  background: #ff5384d2;
   font-weight: bold;
 }
 
@@ -267,7 +267,7 @@ section {
 }
 
 .item.selected {
-  background: #ff627c;
+  background: #ff5384d2;
 }
 
 .number {
@@ -283,8 +283,9 @@ section {
 .content {
   width: 100%;
   padding: 1rem;
-  background: #242424c0;
-  backdrop-filter: blur(5px);
+  background: #efffae;
+  border: 3px solid #ff5384d2;
+  color: black;
   overflow-y: auto;
   height: 350px;
 }
@@ -292,7 +293,7 @@ section {
 .close-btn {
   padding: 0.5rem 1rem;
   text-transform: uppercase;
-  background: #ff627c;
+  background: #ff5384d2;
   width: fit-content;
   margin: 1rem 0;
   align-self: flex-end;

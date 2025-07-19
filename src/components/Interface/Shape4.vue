@@ -1,7 +1,7 @@
 <template>
     <div class="shape shape-4">
         <img src="@/assets/lpflower1.gif" alt="">
-        <div @mouseenter="playAudio('hover')" @click="showInfo(), playAudio('click')" class="info"><i class="bi bi-info-circle-fill"></i></div>
+        <div @mouseenter="playAudio('hover')" @click="showInfo(), playAudio('click')" class="info"><i class="bi bi-info-circle-fill"></i>See info</div>
     </div>
     <!-- <div v-if="show" class="info-modal modal">
         <h1>Info about this flower..</h1>
@@ -66,19 +66,18 @@ img {
     font-family: 'Space Mono';
     text-transform: uppercase;
     color: white;
-    background: deeppink;
     padding: 0.1rem 0.3rem;
     cursor: pointer;
     align-items: center;
     display: none;
     transition: 0.2s;
-}
-.info span {
-    font-family: 'michroma';
+    font-size: 0.8rem;
 }
 .info i {
     font-size: 0.7rem;
     transition: 0.2s;
+    padding-right: 0.5rem;
+    color: #efffae;
 }
 .info .text {
     display: none;

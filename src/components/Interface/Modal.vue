@@ -151,10 +151,10 @@ export default {
   z-index: 1;
 }
 .modal-content {
-  background: rgb(239, 255, 174);
+  background: #efffae;
   width: 400px;
   text-align: center;
-  border: 3px solid deeppink;
+  border: 3px solid #ff5384d2;
   margin-bottom: 7rem;
   position: relative;
 }
@@ -177,7 +177,7 @@ export default {
   font-family: 'Space Mono';
   text-transform: uppercase;
   font-size: 1rem;
-  background: deeppink;
+  background: #ff5384d2;
   padding: 0.5rem;
   color: white;
 }

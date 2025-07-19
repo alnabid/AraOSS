@@ -19,7 +19,7 @@ export default {
     },
     currentlyPlaying() {
       const key = currentlyPlaying.value;
-      return this.audioMap[key] || { name: 'None' };
+      return this.audioMap[key] || { name: 'Audio turned off' };
     }
   },
 
