@@ -4,17 +4,19 @@ import Interface from '@/components/Interface/Interface.vue';
 import audioMixin from '@/mixins/audioMixin';
 import Modal from '@/components/Interface/Modal.vue';
 import { eventBus } from '@/eventBus';
+import Library from '@/components/Interface/Library.vue';
 </script>
 <template>
     <div class="interface">
         <Background />
         <Interface />
         <Modal ref="modal" />
+        <Library ref="library" />
     </div>
 </template>
 <script>
 export default {
-    components: { Modal },
+    components: { Modal, Library },
     mixins: [audioMixin],
   data() {
     return {
@@ -23,7 +25,9 @@ export default {
     };
   },
   mounted() {
-        this.playPlaylist(['twozero', 'its_too_cold'])
+        if (!this.audioMuted) {
+          this.playPlaylist(['twozero', 'its_too_cold']);
+        }
 
         eventBus.on('open-modal', (contents) => {
         // contents is expected to be an array of {header, note}
@@ -33,6 +37,13 @@ export default {
         eventBus.on('close-modal', () => {
         this.$refs.modal.close();
         });
+
+        eventBus.on('open-library', ()=>{
+          this.$refs.library.open()
+        })
+        eventBus.on('close-library', ()=>{
+          this.$refs.library.close()
+        })
     }
 }
 </script>

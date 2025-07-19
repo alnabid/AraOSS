@@ -1,6 +1,7 @@
 <template>
     <div class="shape radio-info">
-      Currently playing: {{ currentlyPlaying.name }}
+        <i class="bi bi-music-note"></i>
+        <span>{{ currentlyPlaying.name }}</span> 
     </div>
 </template>
 <script>
@@ -15,3 +16,8 @@ export default {
     }
 }
 </script>
+<style scoped>
+span {
+    padding: 0 0.5rem;
+}
+</style>

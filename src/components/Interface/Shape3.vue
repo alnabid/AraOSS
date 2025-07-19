@@ -26,7 +26,7 @@ export default {
       cards: [
         {
           icon: 'bi bi-headphones',
-          text: 'Turn audio on and use headphones for intended experience.',
+          text: 'This product contains audio.',
         },
         {
           icon: 'bi bi-info',
@@ -34,7 +34,7 @@ export default {
         },
         {
           icon: 'bi bi-stickies',
-          text: 'Click on Gallery for developer notes.',
+          text: 'Click on Library for developer notes.',
         },
         {
           icon: 'bi bi-magic',

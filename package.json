@@ -1,6 +1,6 @@
 {
-  "name": "quick-find",
-  "productName": "Quick Find",
+  "name": "ara-os-simulation",
+  "productName": "Ara OS Simulation",
   "version": "1.0.0",
   "description": "app-description",
   "main": ".vite/build/main.js",

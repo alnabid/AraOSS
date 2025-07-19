@@ -2,79 +2,74 @@
   <div class="shape shape-2">
     <!-- Main links menu -->
     <div v-if="!showSettings && !showGame" class="links">
-        <div
-            @mouseenter="playAudio('hover')"
-            @click="() => { playAudio('click'); openGame() }"
-            class="link"
-        >
-            <span>S</span>ta<span>rt</span>
-            <div class="bg"></div>
-        </div>
-        <div
-            @mouseenter="playAudio('hover')"
-            @click="playAudio('click')"
-            class="link"
-        >
-            Ga<span>lle</span>ry
-            <div class="bg"></div>
-        </div>
+      <div
+        @mouseenter="playAudio('hover')"
+        @click="() => { playAudio('click'); openGame() }"
+        class="link"
+      >
+        <span>S</span>ta<span>rt</span>
+        <div class="bg"></div>
+      </div>
+      <div
+        @mouseenter="playAudio('hover')"
+        @click="()=>{playAudio('click'); openLibrary()}"
+        class="link"
+      >
+        Li<span>bra</span>ry
+        <div class="bg"></div>
+      </div>
 
-        <!-- Settings toggle -->
-        <div
-            @mouseenter="playAudio('hover')"
-            @click="openSettings"
-            class="link"
-        >
-            S<span>et</span>t<span>in</span>gs
-            <div class="bg"></div>
-        </div>
+      <!-- Settings toggle -->
+      <div @mouseenter="playAudio('hover')" @click="openSettings" class="link">
+        S<span>et</span>t<span>in</span>gs
+        <div class="bg"></div>
+      </div>
 
-        <div class="notes">
-            25 <div class="horline"></div> DEM0 22/07
-        </div>
-        <div
-            @mouseenter="playAudio('hover')"
-            @click="playAudio('click')"
-            class="link"
-        >
-            Cr<span>ed</span>its
-            <div class="bg"></div>
-        </div>
-        </div>
+      <div class="notes">
+        25 <div class="horline"></div> DEM0 22/07
+      </div>
+      <div
+        @mouseenter="playAudio('hover')"
+        @click="()=>{playAudio('click'); exitApp()}"
+        class="link"
+      >
+        e<span>x</span>it
+        <div class="bg"></div>
+      </div>
     </div>
 
     <!-- Settings overlay UI inside same component -->
     <Settings
-    v-if="showSettings"
-    :settings="settings"
-    @closeSettings="closeSettings"
-    @playClick="playAudio('click')"
-    @muteAudio="muteAudio('all')"
-    @unmuteAudio="unmuteAudio('all')"
+      v-if="showSettings"
+      :settings="settings"
+      @closeSettings="closeSettings"
+      @playClick="playAudio('click')"
+      @muteAudio="muteAudio('all')"
+      @unmuteAudio="unmuteAudio('all')"
     />
-
-  <GameComponent :show="showGame" @close="showGame = false" />
+  </div>
 </template>
 
 <script>
 import audioMixin from '@/mixins/audioMixin';
 import routeMixin from '@/mixins/routeMixin';
-import Settings from '@/components/Interface/Settings.vue'; // Adjust path as needed
-import GameComponent from './Game.vue';
+import Settings from '@/components/Interface/Settings.vue';
+import Modal from './Modal.vue';
+import { eventBus } from '@/eventBus';
 
 export default {
   mixins: [audioMixin, routeMixin],
   components: {
-    Settings, GameComponent 
+    Settings,
+    Modal,
   },
   data() {
     return {
       showSettings: false,
-      showGame: false,
       settings: [
         {
-          name: 'Dummy Setting 1',
-          options: ['Option A', 'Option B', 'Option C'],
+          name: 'Window',
+          options: ['Maximized', 'Windowed', 'Full Screen'],
           currentIndex: 0,
         },
         {
@@ -86,6 +81,9 @@ export default {
     };
   },
   methods: {
+    exitApp() {
+      window.electronAPI.exitApp();
+    },
     openSettings() {
       this.playAudio('click');
       this.showSettings = true;
@@ -95,12 +93,66 @@ export default {
       this.showSettings = false;
     },
     openGame() {
-      this.playAudio('click');
-      this.showGame = true;
+      eventBus.emit('open-modal', [
+        { header: 'Start', note: "There's nothing here..." },
+        { header: 'Start', note: 'I was on low budget' },
+        { header: 'And..', note: 'and low time' },
+        { header: 'And..', note: 'and i suck at coding' },
+        { header: 'sorry', note: '...' },
+        { header: 'or perhaps', note: 'maybe...' },
+        { header: 'or perhaps', note: 'maybe next time' },
+        { header: 'or perhaps', note: '(no promises)' },
+      ]);
     },
-    closeGame() {
-      this.showGame = false;
+    openLibrary() {
+      eventBus.emit('open-library');
     },
+    applyWindowSetting() {
+      const windowSetting = this.settings.find((s) => s.name === 'Window');
+      if (!windowSetting) return;
+      const value = windowSetting.options[windowSetting.currentIndex];
+      if (value === 'Maximized') window.electronAPI.maximizeApp();
+      else if (value === 'Windowed') window.electronAPI.restoreApp();
+      else if (value === 'Full Screen') window.electronAPI.fullscreenApp();
+    },
+    async loadSettings() {
+      const savedSettings = await window.electronAPI.loadSettings();
+      if (savedSettings) {
+        this.settings.forEach((setting, i) => {
+          if (
+            savedSettings[i] &&
+            typeof savedSettings[i].currentIndex === 'number'
+          ) {
+            this.settings[i].currentIndex = savedSettings[i].currentIndex;
+          }
+        });
+      }
+      this.applyWindowSetting();
+    },
+    saveSettingsBeforeClose() {
+      window.electronAPI.saveSettings(JSON.parse(JSON.stringify(this.settings)));
+    },
+  },
+  watch: {
+    settings: {
+      deep: true,
+      handler() {
+        window.electronAPI.saveSettings(JSON.parse(JSON.stringify(this.settings)));
+        this.applyWindowSetting();
+      },
+    },
+  },
+  created() {
+    this.loadSettings();
+    window.addEventListener('beforeunload', this.saveSettingsBeforeClose);
+
+    if (localStorage.getItem('openSettingsAfterReload') === 'true') {
+      this.showSettings = true;
+      localStorage.removeItem('openSettingsAfterReload');
+    }
+  },
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', this.saveSettingsBeforeClose);
   },
 };
 </script>

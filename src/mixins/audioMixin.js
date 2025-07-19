@@ -8,7 +8,8 @@ const currentlyPlaying = ref('none');
 export default {
   data() {
     return {
-      audioMap
+      audioMap,
+      audioMuted: localStorage.getItem('audioMuted') === 'true'
     };
   },
 
@@ -25,6 +26,8 @@ export default {
 
   methods: {
     playAudio(key, loop = false) {
+      if (this.audioMuted) return;
+
       const entry = this.audioMap[key];
       if (!entry || !entry.audio) return;
 
@@ -68,6 +71,8 @@ export default {
     },
 
     playPlaylist(keys) {
+      if (this.audioMuted) return;
+
       if (!Array.isArray(keys) || keys.length === 0) return;
 
       let currentIndex = 0;

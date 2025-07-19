@@ -1,11 +1,13 @@
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
-import { readFileSync, writeFile, readdir } from 'node:fs';
+import { readFileSync, writeFile, readdir, promises as fsPromises } from 'node:fs';
+
 import Store from 'electron-store';
 import { ChildProcess, spawn } from 'node:child_process';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
+const settingsPath = path.join(app.getPath('userData'), 'settings.json');
 
 const store = new Store();
 
@@ -14,19 +16,22 @@ if (started) {
 }
 
 const createWindow = () => {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 900,
     height: 600,
+    // frame: false,
+    // titleBarStyle: 'hidden',
     icon: process.platform === 'win32'
       ? path.join(__dirname, 'assets', 'icon.ico')
       : path.join(__dirname, 'assets', 'icon.icns'),
     webPreferences: {
-      preload: path.join(__dirname, '../preload.js'),
+      preload: path.join(__dirname, '/preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
   });
+
+  mainWindow.maximize();
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -36,8 +41,40 @@ const createWindow = () => {
   }
 
   mainWindow.openDevTools();
+
+  ipcMain.on('maximize-app', () => {
+    if (mainWindow) {
+      mainWindow.setFullScreen(false);
+      mainWindow.maximize();
+    } 
+  });
+
+  ipcMain.on('restore-app', () => {
+    if (mainWindow) {
+      mainWindow.setFullScreen(false);
+      mainWindow.restore();
+    } 
+  });
+
+  ipcMain.on('fullscreen-app', () => {
+    if (mainWindow) mainWindow.setFullScreen(true);
+  });
 };
 
+ipcMain.handle('save-settings', async (_, settings) => {
+  await fsPromises.writeFile(settingsPath, JSON.stringify(settings, null, 2));
+});
+
+// Load settings to renderer
+ipcMain.handle('load-settings', async () => {
+  try {
+    const raw = await fsPromises.readFile(settingsPath, 'utf-8');
+    return JSON.parse(raw);
+  } catch (err) {
+    console.log('Failed to load settings:', err);
+    return null;
+  }
+});
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -60,4 +97,8 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+ipcMain.on('exit-app', () => {
+  app.quit();
 });

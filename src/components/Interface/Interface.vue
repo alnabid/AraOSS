@@ -13,8 +13,8 @@ import Shape4 from './Shape4.vue';
                 <Shape2 />
             </div>
             <div class="column column-2">
-                <Shape3 />
                 <CurrentSong />
+                <Shape3 />
                 <Shape4 />
             </div>
         </div>

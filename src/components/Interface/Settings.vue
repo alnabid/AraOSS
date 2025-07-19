@@ -31,12 +31,25 @@ export default {
 
       const selectedValue = setting.options[setting.currentIndex];
 
+      if (setting.name === 'Window') {
+        if (selectedValue === 'Maximized') {
+          window.electronAPI.maximizeApp();
+        } else if (selectedValue === 'Windowed') {
+          window.electronAPI.restoreApp();
+        } else if (selectedValue === 'Full Screen') {
+          window.electronAPI.fullscreenApp();
+        }
+      }
+
       if (setting.name === 'Audio') {
         if (selectedValue === 'On') {
           this.$emit('unmuteAudio');
+          localStorage.setItem('openSettingsAfterReload', 'true');
+          window.location.reload();
+          localStorage.setItem('audioMuted', 'false');
         } else if (selectedValue === 'Off') {
           this.$emit('muteAudio');
-          console.log('pong');
+          localStorage.setItem('audioMuted', 'true');
         }
       }
     },

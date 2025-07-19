@@ -1,7 +1,7 @@
 <template>
     <div class="shape shape-4">
         <img src="@/assets/lpflower1.gif" alt="">
-        <div @mouseenter="playAudio('hover')" @click="showInfo()" class="info"><i class="bi bi-info-circle-fill"></i></div>
+        <div @mouseenter="playAudio('hover')" @click="showInfo(), playAudio('click')" class="info"><i class="bi bi-info-circle-fill"></i></div>
     </div>
     <!-- <div v-if="show" class="info-modal modal">
         <h1>Info about this flower..</h1>
@@ -24,9 +24,20 @@ export default {
     methods: {
         showInfo() {
             eventBus.emit('open-modal', [
-                { header: 'Page 1', note: 'This is the first note.' },
-                { header: 'Page 2', note: 'Here comes the second note.' },
-                { header: 'Page 3', note: 'Last one before closing.' }
+                { header: 'About flower', note: 'I made this flower in blender..' },
+                { header: 'About flower', note: 'What flower is it- you ask?' },
+                { header: 'About flower', note: 'uh' },
+                { header: 'About flower', note: 'uhhh' },
+                { header: 'About flower', note: 'uhhhhhhhhh' },
+                { header: 'About flower', note: 'i' },
+                { header: 'About flower', note: 'have' },
+                { header: 'About flower', note: 'no' },
+                { header: 'About flower', note: 'idea' },
+                { header: 'About flower', note: 'that\'s right! I have no idea' },
+                { header: 'About flower', note: 'I cant even name more than 5 flowers if you asked me' },
+                { header: 'About flower', note: 'Well, I can name one' },
+                { header: 'About flower', note: 'It\'s you' },
+                { header: 'About flower', note: 'yep, im not a flower nerd' },
             ]);
         }
     }

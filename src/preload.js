@@ -1,8 +1,10 @@
-const { contextBridge } = require('electron');
-const Store = require('electron-store');
-const store = new Store();
+const { contextBridge, ipcRenderer } = require('electron');
 
-contextBridge.exposeInMainWorld('electronStore', {
-  get: (key) => store.get(key),
-  set: (key, value) => store.set(key, value),
+contextBridge.exposeInMainWorld('electronAPI', {
+  saveSettings: (settings) => ipcRenderer.invoke('save-settings', settings),
+  loadSettings: () => ipcRenderer.invoke('load-settings'),
+  exitApp: () => ipcRenderer.send('exit-app'),
+  maximizeApp: () => ipcRenderer.send('maximize-app'),
+  restoreApp: () => ipcRenderer.send('restore-app'),
+  fullscreenApp: () => ipcRenderer.send('fullscreen-app'),
 });
