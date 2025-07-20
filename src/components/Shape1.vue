@@ -13,7 +13,7 @@
     padding: 1rem 2rem;
     display: flex;
     gap: 0.2rem;
-    color: #ff5384d2;
+    color: var(--primary-pink);
     gap: 0.5rem;
     flex-direction: column;
 }
@@ -27,7 +27,7 @@
 }
 .header p {
     font-family: 'Press Start 2P';
-    background: #ff5384d2;
+    background: var(--primary-pink);
     padding: 0.5rem;
     padding-right: 2rem;
     width: fit-content;

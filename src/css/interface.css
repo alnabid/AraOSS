@@ -101,14 +101,7 @@ section {
 
 .shape-4 {
     flex: 1;
-    background: rgba(255, 255, 255, 0.153);
-    mask: linear-gradient(
-        transparent 0% 25%,
-        black  25% 50%,
-        transparent 50% 75%,
-        black 75% 100%
-    );
-    mask-size: 100% 10px;
+    background: var(--primary-pink);
     align-self: flex-end;
     border-radius: 0;
     animation: flicker ease-in-out infinite 1s;
@@ -132,29 +125,29 @@ section {
     0% {
         mask: linear-gradient(
         transparent 0% 25%,
-        black  25% 50%,
+        var(--black)  25% 50%,
         transparent 50% 75%,
-        black 75% 100%
+        var(--black) 75% 100%
     );
-        mask-size: 100% 10px;
+        mask-size: 50% 15px;
     }
     50% {
         mask: linear-gradient(
-        black 0% 25%,
+        var(--black) 0% 25%,
         transparent  25% 50%,
         transparent 50% 75%,
         transparent 75% 100%
     );
-        mask-size: 100% 10px;
+        mask-size: 50% 15px;
     }
     100% {
         mask: linear-gradient(
         transparent 0% 25%,
-        black  25% 50%,
+        var(--black)  25% 50%,
         transparent 50% 75%,
-        black 75% 100%
+        var(--black) 75% 100%
     );
-        mask-size: 100% 10px;
+        mask-size: 50% 15px;
     }
 }
 

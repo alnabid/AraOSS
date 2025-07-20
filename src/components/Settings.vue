@@ -152,7 +152,7 @@ export default {
 }
 
 .close-btn {
-  background: #ff5384d2;
+  background: var(--primary-pink);
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
@@ -172,8 +172,8 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 1rem;
-  outline: 1px solid #ff5384d2;
-  color: #ff5384d2;
+  outline: 1px solid var(--primary-pink);
+  color: var(--primary-pink);
   border-radius: 0.3rem;
   cursor: pointer;
   user-select: none;
@@ -189,12 +189,12 @@ export default {
 }
 
 .setting.selected {
-  background-color: #efffae;
+  background-color: var(--secondary-pink);
   outline: 0;
 }
 
 .setting.selected .active-option {
-  color: black;
+  color: var(--black);
 }
 
 .keybinds {

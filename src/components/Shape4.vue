@@ -77,7 +77,7 @@ img {
     font-size: 0.7rem;
     transition: 0.2s;
     padding-right: 0.5rem;
-    color: #efffae;
+    color: var(--secondary-pink);
 }
 .info .text {
     display: none;

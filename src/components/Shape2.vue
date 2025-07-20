@@ -172,8 +172,8 @@ export default {
   margin: 2rem;
 }
 .links .link {
-  outline: 1px solid #ff5384d2;
-  color: #ff5384d2;
+  outline: 1px solid var(--primary-pink);
+  color: var(--primary-pink);;
   width: fit-content;
   font-size: 1.5rem;
   padding: 0.5rem 8rem 0.2rem 1rem;
@@ -193,13 +193,13 @@ export default {
   margin: 2rem 0;
   font-size: 0.6rem;
   gap: 0.5rem;
-  color: #ff5384d2;
+  color: var(--primary-pink);
   align-items: center;
 }
 .notes .horline {
   width: 100px;
   height: 1rem;
-  background: #efffae;
+  background: var(--secondary-pink);
   border-radius: 2rem;
 }
 .links .link:hover {

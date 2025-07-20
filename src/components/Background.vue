@@ -1,14 +1,15 @@
 <template>
     <div class="overlay"></div>
     <section>
-        <img src="@/assets/boomerang.gif" alt="">
+        <div class="bg"></div>
     </section>
 </template>
 <style scoped>
 .overlay {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.514);
+    background: var(--black);
+    opacity: 60%;
     z-index: -99;
     position: fixed;
 }
@@ -18,10 +19,23 @@ section {
     width: 100%;
     height: 100%;
 }
-section img  {
+section .bg  {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: blur(20px);
+    background: linear-gradient(45deg, var(--primary-pink), var(--black));
+    background-size: 400% 400%;
+    animation: bg-gradient 20s ease infinite;
+    opacity: 50%;
+}
+@keyframes bg-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100%, 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 </style>
