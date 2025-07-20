@@ -24,6 +24,23 @@ export default {
       modalNote: '',
     };
   },
+  methods: {
+    themeSwitcher(value) {
+      console.log('okay theme is okay ' + value);
+
+      const el = document.querySelector('.interface');
+      if (!el) return;
+
+      // Remove all classes except 'interface'
+      el.className = 'interface';
+
+      // Add the new theme class
+      if (value && typeof value === 'string') {
+        el.classList.add(value);
+        localStorage.setItem('selectedTheme', value);
+      }
+    }
+  },
   mounted() {
         if (!this.audioMuted) {
           this.playPlaylist(['twozero', 'its_too_cold']);
@@ -44,6 +61,15 @@ export default {
         eventBus.on('close-library', ()=>{
           this.$refs.library.close()
         })
+
+        eventBus.on('theme-change', (selectedValue) => {
+          this.themeSwitcher(selectedValue)
+        })
+
+        const savedTheme = localStorage.getItem('selectedTheme');
+        if (savedTheme) {
+          this.themeSwitcher(savedTheme);
+        }
     }
 }
 </script>

@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import { eventBus } from '@/eventBus';
+
 export default {
   props: {
     settings: {
@@ -73,6 +75,16 @@ export default {
       this.$emit('playClick');
 
       const selectedValue = setting.options[setting.currentIndex];
+
+      if (setting.name === 'Theme') {
+        if (selectedValue === 'Deeppink') {
+eventBus.emit('theme-change', selectedValue)
+        } else if (selectedValue === 'Grass') {
+eventBus.emit('theme-change', selectedValue)
+        } else if (selectedValue === 'Dark') {
+eventBus.emit('theme-change', selectedValue)
+        }
+      }
 
       if (setting.name === 'Window') {
         if (selectedValue === 'Maximized') {

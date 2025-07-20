@@ -70,6 +70,11 @@ export default {
       showSettings: false,
       settings: [
         {
+          name: 'Theme',
+          options: ['Deeppink', 'Grass', 'Dark'],
+          currentIndex: 0,
+        },
+        {
           name: 'Window',
           options: ['Maximized', 'Windowed', 'Full Screen'],
           currentIndex: 0,
@@ -172,8 +177,6 @@ export default {
   margin: 2rem;
 }
 .links .link {
-  outline: 1px solid var(--primary-pink);
-  color: var(--primary-pink);;
   width: fit-content;
   font-size: 1.5rem;
   padding: 0.5rem 8rem 0.2rem 1rem;
@@ -183,6 +186,10 @@ export default {
   cursor: pointer;
   transition: 0.2s;
   position: relative;
+}
+.Deeppink .links .link {
+  outline: 1px solid var(--primary-pink);
+  color: var(--primary-pink);;
 }
 .links .link span {
   font-family: 'Space Mono';
