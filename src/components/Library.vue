@@ -111,7 +111,7 @@
   </section>
 </template>
 <script>
-import audioMixin from '../../mixins/audioMixin';
+import audioMixin from '../mixins/audioMixin';
 
 export default {
   mixins: [audioMixin],
@@ -297,5 +297,6 @@ section {
   width: fit-content;
   margin: 1rem 0;
   align-self: flex-end;
+  cursor: pointer;
 }
 </style>

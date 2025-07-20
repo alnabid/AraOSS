@@ -55,7 +55,7 @@
 <script>
 import audioMixin from '@/mixins/audioMixin';
 import routeMixin from '@/mixins/routeMixin';
-import Settings from '@/components/Interface/Settings.vue';
+import Settings from '@/components/Settings.vue';
 import Modal from './Modal.vue';
 import { eventBus } from '@/eventBus';
 

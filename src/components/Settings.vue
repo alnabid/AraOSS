@@ -152,7 +152,7 @@ export default {
 }
 
 .close-btn {
-  background: rgb(255, 20, 87);
+  background: #ff5384d2;
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
@@ -172,8 +172,8 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 1rem;
-  outline: 1px solid rgba(255, 83, 132, 0.6);
-  color: rgb(255, 20, 87);
+  outline: 1px solid #ff5384d2;
+  color: #ff5384d2;
   border-radius: 0.3rem;
   cursor: pointer;
   user-select: none;
@@ -189,8 +189,12 @@ export default {
 }
 
 .setting.selected {
-  background-color: rgba(255, 250, 251, 0.5);
+  background-color: #efffae;
   outline: 0;
+}
+
+.setting.selected .active-option {
+  color: black;
 }
 
 .keybinds {

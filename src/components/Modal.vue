@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import audioMixin from '../../mixins/audioMixin';
+import audioMixin from '../mixins/audioMixin';
 export default {
   mixins: [audioMixin],
   data() {

@@ -1,10 +1,10 @@
 <script setup>
-import Background from '@/components/Interface/Background.vue';
-import Interface from '@/components/Interface/Interface.vue';
+import Background from '@/components/Background.vue';
+import Interface from '@/components/Interface.vue';
 import audioMixin from '@/mixins/audioMixin';
-import Modal from '@/components/Interface/Modal.vue';
+import Modal from '@/components/Modal.vue';
 import { eventBus } from '@/eventBus';
-import Library from '@/components/Interface/Library.vue';
+import Library from '@/components/Library.vue';
 </script>
 <template>
     <div class="interface">

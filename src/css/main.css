@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Press+Start+2P&family=Prosto+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Zen+Dots&display=swap');
+@import url(../assets/fonts/stylesheet.css);
 
 * {
     margin: 0;
@@ -13,7 +12,7 @@
     outline: none;
 }
 body {
-    font-family: 'Cal Sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Space Mono', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
