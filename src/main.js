@@ -16,11 +16,24 @@ if (started) {
 }
 
 const createWindow = () => {
+  const splash = new BrowserWindow({
+    width: 400,
+    height: 300,
+    frame: false,
+    transparent: true,
+    alwaysOnTop: true,
+    resizable: false,
+    show: true,
+  });
+
+  splash.loadFile(path.join(__dirname, 'loading.html'));
+
   const mainWindow = new BrowserWindow({
     width: 950,
     height: 550,
     minWidth: 950,
     minHeight: 550,
+    show: false, // do not show until ready
     frame: false,
     titleBarStyle: 'hidden',
     icon: process.platform === 'win32'
@@ -33,22 +46,23 @@ const createWindow = () => {
     },
   });
 
-  // mainWindow.openDevTools();
-
-  mainWindow.maximize();
-
-  mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.setZoomFactor(0.8);
-    mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
-  });
-
-  // and load the index.html of the app.
+  // Load main app
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
+  // When ready, close splash and show main
+  mainWindow.once('ready-to-show', () => {
+    splash.destroy();
+    mainWindow.show();
+    mainWindow.maximize();
+    mainWindow.webContents.setZoomFactor(0.8);
+    mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
+  });
+
+  // IPC handlers
   ipcMain.on('maximize-app', () => {
     if (mainWindow) {
       mainWindow.setFullScreen(false);
@@ -67,6 +81,7 @@ const createWindow = () => {
     if (mainWindow) mainWindow.setFullScreen(true);
   });
 };
+
 
 ipcMain.handle('save-settings', async (_, settings) => {
   await fsPromises.writeFile(settingsPath, JSON.stringify(settings, null, 2));

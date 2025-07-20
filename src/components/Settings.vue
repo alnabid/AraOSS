@@ -7,7 +7,12 @@
         class="setting"
         :class="{ selected: selectedIndex === i }"
         @click="cycleOption(i)"
-        @mouseenter="()=>{this.$emit('playSelect'); selectedIndex = i}"
+        @mouseenter="() => {
+          if (selectedIndex !== i) {
+            this.$emit('playSelect');
+            selectedIndex = i;
+          }
+        }"
       >
         <div class="name">{{ setting.name }}</div>
         <div class="active-option">{{ setting.options[setting.currentIndex] }}</div>
