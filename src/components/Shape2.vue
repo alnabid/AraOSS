@@ -46,6 +46,8 @@
       @update:selectedIndex="val => selectedIndex = val"
       @closeSettings="closeSettings"
       @playClick="playAudio('click')"
+      @playSelect="playAudio('select')"
+      @playClose="playAudio('close')"
       @muteAudio="muteAudio('all')"
       @unmuteAudio="unmuteAudio('all')"
     />
@@ -98,7 +100,6 @@ export default {
       this.selectedIndex = 0; // reset selection on open
     },
     closeSettings() {
-      this.playAudio('click');
       this.showSettings = false;
     },
     openGame() {

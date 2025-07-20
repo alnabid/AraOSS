@@ -131,7 +131,7 @@ export default {
     },
     close() {
       this.visible = false;
-      this.playAudio('click')
+      this.playAudio('close')
       document.removeEventListener('keydown', this.handleKey);
       document.removeEventListener('mousedown', this.handleMouse);
     },
@@ -142,7 +142,7 @@ export default {
     },
     selectItem(index) {
       this.selectedIndex = index;
-      this.playAudio('click')
+      this.playAudio('select')
     },
     handleKey(e) {
       if (!this.visible) return;
@@ -154,14 +154,14 @@ export default {
         case 'S':
             if (this.selectedIndex < 1) {
                 this.selectedIndex++;
-                this.playAudio('click');
+                this.playAudio('select');
             }
             break;
         case 'w':
         case 'W':
             if (this.selectedIndex > 0) {
                 this.selectedIndex--;
-                this.playAudio('click');
+                this.playAudio('select');
             }
             break;
         case 'Tab':

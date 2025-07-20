@@ -77,7 +77,7 @@ export default {
       this.currentIndex = 0;
       window.removeEventListener('keydown', this.handleKey);
       window.removeEventListener('mousedown', this.handleMouse);
-      this.playAudio('click')
+      this.playAudio('close')
     },
     nextOrClose() {
       if (this.isLast) {

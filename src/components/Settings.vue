@@ -7,13 +7,13 @@
         class="setting"
         :class="{ selected: selectedIndex === i }"
         @click="cycleOption(i)"
-        @mouseenter="selectedIndex = i"
+        @mouseenter="()=>{this.$emit('playSelect'); selectedIndex = i}"
       >
         <div class="name">{{ setting.name }}</div>
         <div class="active-option">{{ setting.options[setting.currentIndex] }}</div>
       </div>
     </section>
-    <button class="close-btn" @click="$emit('closeSettings')">Done</button>
+    <button class="close-btn" @click="()=>{$emit('playClose'); $emit('closeSettings')}">Done</button>
       <div class="keybinds">
       <h2>Keybinds</h2>
       <div class="instructions">
@@ -115,6 +115,7 @@ export default {
         case 'w':
           this.selectedIndex =
             (this.selectedIndex - 1 + this.settings.length) % this.settings.length;
+          this.$emit('playSelect')
           break;
         case ' ':
           e.preventDefault();
@@ -122,6 +123,7 @@ export default {
           break;
         case 's':
           this.selectedIndex = (this.selectedIndex + 1) % this.settings.length;
+          this.$emit('playSelect')
           break;
         case 'a':
         case 'd':

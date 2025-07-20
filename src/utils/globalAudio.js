@@ -13,6 +13,20 @@ export const audioMap = {
     persistent: true,
     type: 'sfx',
   },
+  close: {
+    name: 'Close Sound',
+    audio: new Audio('/sounds/minimize_001.ogg'),
+    volume: 0.1,
+    persistent: true,
+    type: 'sfx',
+  },
+  select: {
+    name: 'Select Sound',
+    audio: new Audio('/sounds/select_006.ogg'),
+    volume: 0.3,
+    persistent: true,
+    type: 'sfx',
+  },
   its_too_cold: {
     name: 'It’s Too Cold',
     audio: new Audio('/sounds/its_too_cold.mp3'),
