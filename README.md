@@ -1,7 +1,7 @@
 # Download
 Check the releases section from the sidebar at the right of your screen.
 
-### Stuck on load?
+### Stuck on download?
 Very sad.. I know.. here's what to do- 
 
 1. Clone this repository
