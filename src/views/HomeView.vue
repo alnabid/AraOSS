@@ -7,7 +7,7 @@ import { eventBus } from '@/eventBus';
 import Library from '@/components/Library.vue';
 </script>
 <template>
-    <div class="interface">
+    <div class="interface Deeppink">
         <Background />
         <Interface />
         <Modal ref="modal" />

@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
     background: var(--black);
-    opacity: 60%;
+    opacity: 80%;
     z-index: -99;
     position: fixed;
 }
@@ -22,10 +22,24 @@ section {
 section .bg  {
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, var(--primary-pink), var(--black));
-    background-size: 400% 400%;
+}
+.Deeppink section .bg {
+    background: linear-gradient(45deg, var(--deeppink-1), var(--black));
     animation: bg-gradient 20s ease infinite;
-    opacity: 50%;
+    opacity: 90%;
+    background-size: 400% 400%;
+}
+.Grass section .bg {
+    background: linear-gradient(45deg, var(--grass-1), var(--black));
+    animation: bg-gradient 20s ease infinite;
+    opacity: 90%;
+    background-size: 400% 400%;
+}
+.Night section .bg {
+    background: linear-gradient(45deg, var(--night-1), var(--black));
+    animation: bg-gradient 20s ease infinite;
+    opacity: 90%;
+    background-size: 400% 400%;
 }
 @keyframes bg-gradient {
     0% {

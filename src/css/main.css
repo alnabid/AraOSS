@@ -1,8 +1,12 @@
 @import url(../assets/fonts/stylesheet.css);
 
 :root {
-  --primary-pink: #ff5384d2;
-  --secondary-pink: #efffae;
+  --deeppink-1: #ff5384d2;
+  --deeppink-2: #efffae;
+  --grass-1: #3bbe57d2;
+  --grass-2: #a4ffffd2;
+  --night-1: #60126f;
+  --night-2: white;
   --black: #000;
   --white: #fff;
 }
@@ -20,6 +24,7 @@
 }
 body {
     font-family: 'Space Mono', Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
 }
 
 

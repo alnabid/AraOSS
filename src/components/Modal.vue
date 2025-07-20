@@ -143,20 +143,38 @@ export default {
   flex-direction: column;
 }
 .modal-overlay {
-  background: rgba(73, 0, 35, 0.263);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
+}
+.Deeppink .modal-overlay {
+  background: rgba(73, 0, 35, 0.263);
+}
+.Grass .modal-overlay {
+  background: rgba(0, 73, 7, 0.263);
+}
+.Night .modal-overlay {
+  background: rgba(49, 0, 73, 0.263);
 }
 .modal-container {
   z-index: 1;
 }
 .modal-content {
-  background: var(--secondary-pink);
   width: 400px;
   text-align: center;
-  border: 3px solid var(--primary-pink);
   margin-bottom: 7rem;
   position: relative;
+}
+.Deeppink .modal-content {
+  background: var(--deeppink-2);
+  border: 3px solid var(--deeppink-1);
+}
+.Grass .modal-content {
+  background: var(--grass-2);
+  border: 3px solid var(--grass-1);
+}
+.Night .modal-content {
+  background: var(--night-2);
+  border: 3px solid var(--night-1);
 }
 .modal-content i {
   position: absolute;
@@ -177,10 +195,19 @@ export default {
   font-family: 'Space Mono';
   text-transform: uppercase;
   font-size: 1rem;
-  background: var(--primary-pink);
   padding: 0.5rem;
   color: white;
 }
+.Deeppink .modal-content h1 {
+  background: var(--deeppink-1);
+}
+.Grass .modal-content h1 {
+  background: var(--grass-1);
+}
+.Night .modal-content h1 {
+  background: var(--night-1);
+}
+
 .modal-content p {
   font-family: 'Space Mono';
   min-height: 100px;

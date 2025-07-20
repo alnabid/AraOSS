@@ -200,13 +200,22 @@ section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(196, 111, 175, 0.228);
-  color: white;
+  color: white;  
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Space Mono';
   backdrop-filter: blur(5px);
+}
+.Deeppink section {
+  background: rgba(73, 0, 35, 0.263);
+}
+.Grass section {
+  background: rgba(0, 73, 7, 0.263);
+}
+.Night section {
+  background: rgba(49, 0, 73, 0.263);
 }
 
 .container {
@@ -236,10 +245,17 @@ section {
 }
 
 .tab.active {
-  background: var(--primary-pink);
   font-weight: bold;
 }
-
+.Deeppink .tab.active {
+  background: var(--deeppink-1);
+}
+.Grass .tab.active {
+  background: var(--grass-1);
+}
+.Night .tab.active {
+  background: var(--night-1);
+}
 
 .main {
   width: 80%;
@@ -266,8 +282,14 @@ section {
   color: white;
 }
 
-.item.selected {
-  background: var(--primary-pink);
+.Deeppink .item.selected {
+  background: var(--deeppink-1);
+}
+.Grass .item.selected {
+  background: var(--grass-1);
+}
+.Night .item.selected {
+  background: var(--night-1);
 }
 
 .number {
@@ -283,20 +305,40 @@ section {
 .content {
   width: 100%;
   padding: 1rem;
-  background: var(--secondary-pink);
-  border: 3px solid var(--primary-pink);
   color: var(--black);
   overflow-y: auto;
   height: 350px;
+}
+.Deeppink .content {
+  background: var(--deeppink-2);
+  border: 3px solid var(--deeppink-1);
+}
+.Grass .content {
+  background: var(--grass-2);
+  border: 3px solid var(--grass-1);
+}
+.Night .content {
+  background: var(--night-2);
+  border: 3px solid var(--night-1);
 }
 
 .close-btn {
   padding: 0.5rem 1rem;
   text-transform: uppercase;
-  background: var(--primary-pink);
   width: fit-content;
   margin: 1rem 0;
   align-self: flex-end;
   cursor: pointer;
 }
+
+.Deeppink .close-btn {
+  background: var(--deeppink-1);
+}
+.Grass .close-btn {
+  background: var(--grass-1);
+}
+.Night .close-btn {
+  background: var(--night-1);
+}
+
 </style>

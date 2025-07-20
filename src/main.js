@@ -17,10 +17,10 @@ if (started) {
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 600,
-    // frame: false,
-    // titleBarStyle: 'hidden',
+    width: 950,
+    height: 550,
+    frame: false,
+    titleBarStyle: 'hidden',
     icon: process.platform === 'win32'
       ? path.join(__dirname, 'assets', 'icon.ico')
       : path.join(__dirname, 'assets', 'icon.icns'),
@@ -31,7 +31,14 @@ const createWindow = () => {
     },
   });
 
+  // mainWindow.openDevTools();
+
   mainWindow.maximize();
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.setZoomFactor(0.8);
+    mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
+  });
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -39,8 +46,6 @@ const createWindow = () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
-
-  mainWindow.openDevTools();
 
   ipcMain.on('maximize-app', () => {
     if (mainWindow) {

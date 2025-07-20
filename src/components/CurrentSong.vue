@@ -18,7 +18,15 @@ export default {
 </script>
 <style scoped>
 span {
-    color: var(--secondary-pink);
     padding: 0 0.5rem;
+}
+.Deeppink span {
+    color: var(--deeppink-2);
+}
+.Grass span {
+    color: var(--grass-2);
+}
+.Night span {
+    color: var(--night-2);
 }
 </style>

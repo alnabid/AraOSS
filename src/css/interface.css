@@ -101,13 +101,21 @@ section {
 
 .shape-4 {
     flex: 1;
-    background: var(--primary-pink);
     align-self: flex-end;
     border-radius: 0;
     animation: flicker ease-in-out infinite 1s;
     transition: 0.2s;
     overflow: hidden;
     position: relative;
+}
+.Deeppink .shape-4 {
+    background: var(--deeppink-1);
+}
+.Grass .shape-4 {
+    background: var(--grass-1);
+}
+.Night .shape-4 {
+    background: var(--night-1);
 }
 .shape-4:hover {
     animation: none;

@@ -14,7 +14,7 @@
       </div>
     </section>
     <button class="close-btn" @click="$emit('closeSettings')">Done</button>
-        <div class="keybinds">
+      <div class="keybinds">
       <h2>Keybinds</h2>
       <div class="instructions">
         <div class="block">
@@ -78,11 +78,11 @@ export default {
 
       if (setting.name === 'Theme') {
         if (selectedValue === 'Deeppink') {
-eventBus.emit('theme-change', selectedValue)
+          eventBus.emit('theme-change', selectedValue)
         } else if (selectedValue === 'Grass') {
-eventBus.emit('theme-change', selectedValue)
-        } else if (selectedValue === 'Dark') {
-eventBus.emit('theme-change', selectedValue)
+          eventBus.emit('theme-change', selectedValue)
+        } else if (selectedValue === 'Night') {
+          eventBus.emit('theme-change', selectedValue)
         }
       }
 
@@ -160,11 +160,11 @@ eventBus.emit('theme-change', selectedValue)
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  outline: none; /* prevent default focus outline */
+  outline: none;
+  position: relative;
 }
 
 .close-btn {
-  background: var(--primary-pink);
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
@@ -175,23 +175,41 @@ eventBus.emit('theme-change', selectedValue)
   align-self: flex-end;
 }
 
+.Deeppink .close-btn {
+  background: var(--deeppink-1);
+}
+.Grass .close-btn {
+  background: var(--grass-1);
+}
+.Night .close-btn {
+  background: var(--night-1);
+}
+
+
 .settings-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .settings-section .setting {
   display: flex;
   justify-content: space-between;
-  padding: 0.7rem 1rem;
-  outline: 1px solid var(--primary-pink);
-  color: var(--primary-pink);
+  padding: 0.2rem 1rem;
   border-radius: 0.3rem;
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s;
 }
 
+.Deeppink .settings-section .setting {
+  color: var(--deeppink-1);
+}
+.Grass .settings-section .setting {
+  color: var(--grass-1);
+}
+.Night .settings-section .setting {
+  color: var(--night-1);
+}
 .name {
   font-weight: bold;
 }
@@ -201,17 +219,26 @@ eventBus.emit('theme-change', selectedValue)
 }
 
 .setting.selected {
-  background-color: var(--secondary-pink);
   outline: 0;
 }
+.Deeppink .setting.selected {
+  background-color: var(--deeppink-2);
+}
+.Grass .setting.selected {
+  background-color: var(--grass-2);
+}
+.Night .setting.selected {
+  background-color: var(--night-2);
+}
+
 
 .setting.selected .active-option {
   color: var(--black);
 }
 
 .keybinds {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: -8rem;
 }
 .keybinds .instructions {
   flex-wrap: wrap;

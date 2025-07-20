@@ -71,7 +71,7 @@ export default {
       settings: [
         {
           name: 'Theme',
-          options: ['Deeppink', 'Grass', 'Dark'],
+          options: ['Deeppink', 'Grass', 'Night'],
           currentIndex: 0,
         },
         {
@@ -188,8 +188,16 @@ export default {
   position: relative;
 }
 .Deeppink .links .link {
-  outline: 1px solid var(--primary-pink);
-  color: var(--primary-pink);;
+  outline: 1px solid var(--deeppink-1);
+  color: var(--deeppink-1);;
+}
+.Grass .links .link {
+  outline: 1px solid var(--grass-1);
+  color: var(--grass-1);;
+}
+.Night .links .link {
+  outline: 1px solid var(--night-1);
+  color: var(--night-1);;
 }
 .links .link span {
   font-family: 'Space Mono';
@@ -200,27 +208,51 @@ export default {
   margin: 2rem 0;
   font-size: 0.6rem;
   gap: 0.5rem;
-  color: var(--primary-pink);
   align-items: center;
+}
+.Deeppink .notes {
+    color: var(--deeppink-1);
+}
+.Grass .notes {
+    color: var(--grass-1);
+}
+.Night .notes {
+    color: var(--night-1);
 }
 .notes .horline {
   width: 100px;
   height: 1rem;
-  background: var(--secondary-pink);
   border-radius: 2rem;
 }
+.Deeppink .notes .horline {
+    background: var(--deeppink-2);
+}
+.Grass .notes .horline {
+    background: var(--grass-2);
+}
+.Night .notes .horline {
+    background: var(--night-2);
+}
 .links .link:hover {
-  color: white;
+  color: var(--white);
 }
 .links .link .bg {
   width: 0%;
   height: 100%;
-  background: rgba(255, 83, 132, 0.863);
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
   transition: 0.3s;
+}
+.Deeppink .link .bg {
+  background: var(--deeppink-1);
+}
+.Grass .link .bg {
+  background: var(--grass-1);
+}
+.Night .link .bg {
+  background: var(--night-1);
 }
 .links .link:hover .bg {
   width: 100%;

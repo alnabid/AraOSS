@@ -13,9 +13,17 @@
     padding: 1rem 2rem;
     display: flex;
     gap: 0.2rem;
-    color: var(--primary-pink);
     gap: 0.5rem;
     flex-direction: column;
+}
+.Deeppink .header {
+    color: var(--deeppink-1);
+}
+.Grass .header {
+    color: var(--grass-1);
+}
+.Night .header {
+    color: var(--night-1);
 }
 .header h1 {
     font-size: 3rem;
@@ -27,7 +35,6 @@
 }
 .header p {
     font-family: 'Press Start 2P';
-    background: var(--primary-pink);
     padding: 0.5rem;
     padding-right: 2rem;
     width: fit-content;
@@ -35,6 +42,15 @@
     font-size: 1.1rem;
     color: rgb(255, 255, 255);
     animation: flicker 2s forwards infinite;
+}
+.Deeppink .header p {
+    background: var(--deeppink-1);
+}
+.Grass .header p {
+    background: var(--grass-1);
+}
+.Night .header p {
+    background: var(--night-1);
 }
 @keyframes flicker {
     0% {
