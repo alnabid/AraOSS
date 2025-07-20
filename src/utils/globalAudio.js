@@ -1,44 +1,44 @@
+const isDev = import.meta.env.MODE === 'development';
+
+function getAudioPath(filename) {
+  return isDev ? `/sounds/${filename}` : `./sounds/${filename}`;
+}
+
+function createAudio(src, volume, persistent = true, type = 'sfx') {
+  const audio = new Audio(getAudioPath(src));
+  audio.volume = volume;
+  return {
+    name: '',
+    audio,
+    volume,
+    persistent,
+    type
+  };
+}
+
 export const audioMap = {
   hover: {
-    name: 'Hover Sound',
-    audio: new Audio('/sounds/bong_001.ogg'),
-    volume: 0.6,
-    persistent: false,
-    type: 'sfx',
+    ...createAudio('bong_001.ogg', 0.6, false),
+    name: 'Hover Sound'
   },
   click: {
-    name: 'Click Sound',
-    audio: new Audio('/sounds/confirmation_001.ogg'),
-    volume: 0.3,
-    persistent: true,
-    type: 'sfx',
+    ...createAudio('confirmation_001.ogg', 0.3),
+    name: 'Click Sound'
   },
   close: {
-    name: 'Close Sound',
-    audio: new Audio('/sounds/minimize_001.ogg'),
-    volume: 0.1,
-    persistent: true,
-    type: 'sfx',
+    ...createAudio('minimize_001.ogg', 0.1),
+    name: 'Close Sound'
   },
   select: {
-    name: 'Select Sound',
-    audio: new Audio('/sounds/select_006.ogg'),
-    volume: 0.3,
-    persistent: true,
-    type: 'sfx',
+    ...createAudio('select_006.ogg', 0.3),
+    name: 'Select Sound'
   },
   its_too_cold: {
-    name: 'It’s Too Cold',
-    audio: new Audio('/sounds/its_too_cold.mp3'),
-    volume: 0.4,
-    persistent: false,
-    type: 'music',
+    ...createAudio('its_too_cold.mp3', 0.4, false, 'music'),
+    name: 'It’s Too Cold'
   },
   twozero: {
-    name: '2.0',
-    audio: new Audio('/sounds/2.0.wav'),
-    volume: 0.4,
-    persistent: false,
-    type: 'music',
-  },
+    ...createAudio('2.0.wav', 0.4, false, 'music'),
+    name: '2.0'
+  }
 };
