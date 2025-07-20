@@ -19,6 +19,8 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 950,
     height: 550,
+    minWidth: 950,
+    minHeight: 550,
     frame: false,
     titleBarStyle: 'hidden',
     icon: process.platform === 'win32'
