@@ -60,6 +60,7 @@ const createWindow = () => {
     mainWindow.maximize();
     mainWindow.webContents.setZoomFactor(0.8);
     mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
+    // mainWindow.webContents.openDevTools();
   });
 
   // IPC handlers
