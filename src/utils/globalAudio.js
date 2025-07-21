@@ -40,5 +40,32 @@ export const audioMap = {
   twozero: {
     ...createAudio('2.0.wav', 0.4, false, 'music'),
     name: '2.0'
-  }
+  },
+
+  two_am_lucid: {
+    ...createAudio('2_am_lucid.mp3', 0.4, false, 'music'),
+    name: 'Dusqk - 2 AM Lucid'
+  },
+  sound_test: {
+    ...createAudio('sound_test.mp3', 0.4, false, 'music'),
+    name: 'Unbeatable Demo ST - sound test'
+  },
+  games_bookstore: {
+    ...createAudio('games_bookstore.mp3', 0.4, false, 'music'),
+    name: 'OSC - Games Bookstore'
+  },
+  press_play: {
+    ...createAudio('press_play.mp3', 0.4, false, 'music'),
+    name: 'adore; vowl. - press play'
+  },
+  pink_garden: {
+    ...createAudio('pink_garden.mp3', 0.4, false, 'music'),
+    name: 'skysiam; ft. isaku - pink garden'
+  },
+  oyasame: {
+    ...createAudio('oyasame.mp3', 0.4, false, 'music'),
+    name: 'Pathcel Tarts - Oyasame(?)'
+  },
+  
+
 };

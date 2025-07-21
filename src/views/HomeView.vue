@@ -43,7 +43,7 @@ export default {
   },
   mounted() {
         if (!this.audioMuted) {
-          this.playPlaylist(['twozero', 'its_too_cold']);
+          this.playPlaylist(['two_am_lucid', 'sound_test', 'games_bookstore', 'press_play', 'pink_garden', 'oyasame']);
         }
 
         eventBus.on('open-modal', (contents) => {
