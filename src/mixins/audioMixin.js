@@ -4,6 +4,8 @@ import { audioMap } from '@/utils/globalAudio';
 
 const currentAudioKey = ref(null);
 const currentlyPlaying = ref('none');
+const playlistKeys = ref([]);
+const playlistIndex = ref(0);
 
 export default {
   data() {
@@ -23,7 +25,6 @@ export default {
     }
   },
 
-
   methods: {
     playAudio(key, loop = false) {
       if (this.audioMuted) return;
@@ -42,7 +43,6 @@ export default {
       const prevKey = currentAudioKey.value;
       const prevEntry = this.audioMap[prevKey];
 
-      // Only stop previous audio if it's the same type (e.g., music replacing music)
       if (
         prevKey &&
         prevKey !== key &&
@@ -61,7 +61,6 @@ export default {
 
       audio.play();
 
-      // Only update currentlyPlaying if it's music
       if (newType === 'music') {
         currentAudioKey.value = key;
         currentlyPlaying.value = key;
@@ -72,13 +71,13 @@ export default {
 
     playPlaylist(keys) {
       if (this.audioMuted) return;
-
       if (!Array.isArray(keys) || keys.length === 0) return;
 
-      let currentIndex = 0;
+      playlistKeys.value = keys;
+      playlistIndex.value = 0;
 
       const playNext = () => {
-        const key = keys[currentIndex];
+        const key = playlistKeys.value[playlistIndex.value];
         const entry = this.audioMap[key];
         if (!entry || !entry.audio) return;
 
@@ -88,7 +87,6 @@ export default {
         const prevKey = currentAudioKey.value;
         const prevEntry = this.audioMap[prevKey];
 
-        // Only stop previous music
         if (
           prevKey &&
           prevKey !== key &&
@@ -106,7 +104,7 @@ export default {
         audio.loop = false;
 
         audio.onended = () => {
-          currentIndex = (currentIndex + 1) % keys.length;
+          playlistIndex.value = (playlistIndex.value + 1) % playlistKeys.value.length;
           playNext();
         };
 
@@ -116,6 +114,21 @@ export default {
       };
 
       playNext();
+    },
+
+    nextSong() {
+      if (playlistKeys.value.length === 0) return;
+
+      playlistIndex.value = (playlistIndex.value + 1) % playlistKeys.value.length;
+      this.playAudio(playlistKeys.value[playlistIndex.value]);
+    },
+
+    prevSong() {
+      if (playlistKeys.value.length === 0) return;
+
+      playlistIndex.value =
+        (playlistIndex.value - 1 + playlistKeys.value.length) % playlistKeys.value.length;
+      this.playAudio(playlistKeys.value[playlistIndex.value]);
     },
 
     stopAudio(key) {

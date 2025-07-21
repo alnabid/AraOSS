@@ -18,11 +18,11 @@ function createAudio(src, volume, persistent = true, type = 'sfx') {
 
 export const audioMap = {
   hover: {
-    ...createAudio('bong_001.ogg', 0.6, false),
+    ...createAudio('bong_001.ogg', 1, false),
     name: 'Hover Sound'
   },
   click: {
-    ...createAudio('confirmation_001.ogg', 0.3),
+    ...createAudio('confirmation_001.ogg', 0.2),
     name: 'Click Sound'
   },
   close: {
@@ -30,7 +30,7 @@ export const audioMap = {
     name: 'Close Sound'
   },
   select: {
-    ...createAudio('select_006.ogg', 0.3),
+    ...createAudio('select_006.ogg', 0.1),
     name: 'Select Sound'
   },
   its_too_cold: {
@@ -51,7 +51,7 @@ export const audioMap = {
     name: 'Unbeatable Demo ST - sound test'
   },
   games_bookstore: {
-    ...createAudio('games_bookstore.mp3', 0.4, false, 'music'),
+    ...createAudio('games_bookstore.mp3', 0.6, false, 'music'),
     name: 'OSC - Games Bookstore'
   },
   press_play: {
