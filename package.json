@@ -1,8 +1,8 @@
 {
   "name": "ara-os-simulation",
   "productName": "Ara OS Simulation",
-  "version": "0.1.0-alpha.1",
-  "description": "app-description",
+  "version": "1.0.0",
+  "description": "A web-based fun project that mimics a console OS interface.",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",

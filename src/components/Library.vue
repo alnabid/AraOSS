@@ -243,6 +243,14 @@
                 </div>
                 <div class="detail">
                   <div class="type">
+                    Description
+                  </div>
+                  <div class="value">
+                    A web-based fun project <br> that mimics a console OS interface.
+                  </div>
+                </div>
+                <div class="detail">
+                  <div class="type">
                     Build
                   </div>
                   <div class="value">
@@ -401,6 +409,9 @@ export default {
 </script>
 
 <style scoped>
+.deatil .value {
+  width: 200px;
+}
 .detail .type {
   font-weight: bold;
   width: 200px;
@@ -408,6 +419,11 @@ export default {
 .detail {
   display: flex;
   gap: 1rem;
+}
+.app-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .content-title {
   font-size: 1.5rem;
