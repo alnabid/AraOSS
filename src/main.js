@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import { readFileSync, writeFile, readdir, promises as fsPromises } from 'node:fs';
@@ -7,6 +7,7 @@ import Store from 'electron-store';
 import { ChildProcess, spawn } from 'node:child_process';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
+
 const settingsPath = path.join(app.getPath('userData'), 'settings.json');
 
 const store = new Store();
@@ -16,17 +17,6 @@ if (started) {
 }
 
 const createWindow = () => {
-  const splash = new BrowserWindow({
-    width: 400,
-    height: 300,
-    frame: false,
-    transparent: true,
-    alwaysOnTop: true,
-    resizable: false,
-    show: true,
-  });
-
-  splash.loadFile(path.join(__dirname, 'loading.html'));
 
   const mainWindow = new BrowserWindow({
     width: 950,
@@ -55,12 +45,16 @@ const createWindow = () => {
 
   // When ready, close splash and show main
   mainWindow.once('ready-to-show', () => {
-    splash.destroy();
     mainWindow.show();
     mainWindow.maximize();
     mainWindow.webContents.setZoomFactor(0.8);
     mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
     // mainWindow.webContents.openDevTools();
+
+    mainWindow.webContents.setWindowOpenHandler((details) => {
+      shell.openExternal(details.url); // Open URL in user's browser.
+      return { action: "deny" }; // Prevent the app from opening the URL.
+    })
   });
 
   // IPC handlers
